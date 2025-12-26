@@ -15,10 +15,11 @@ public class DBUtil {
     public static Connection getConnection() {
         Connection connect = null;
         try {
-            String url = "jdbc:mariadb://192.168.0.33:3306/edu_management_team2";
-            String user = "hoon6481";
-            String pw = "rladudgns1@";
-            connect = DriverManager.getConnection(url, user , pw);
+            String url = System.getenv("DB_URL");
+            String user = System.getenv("DB_USER");
+            String pw = System.getenv("DB_PASSWORD");
+
+            connect = DriverManager.getConnection(url, user, pw);
         } catch (SQLException e) {
             System.out.println("Mariadb 로그인 오류!");
         }
